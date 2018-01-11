@@ -41,19 +41,19 @@ void setup() {
   //ArduinoInterface.advertise(velPub);
   
   //Input motor class information, initialize times. 
-  motor1.Kpv = 0;
-  motor1.Kiv = 0;
-  motor1.Kdv = 0;
+  motor1.inputKpv(0);
+  motor1.inputKiv(0);
+  motor1.inputKdv(0);
   motor1.calc_t();
 
-  motor2.Kpv = 0;
-  motor2.Kiv = 0;
-  motor2.Kdv = 0;
+  motor2.inputKpv(0);
+  motor2.inputKiv(0);
+  motor2.inputKdv(0);
   motor2.calc_t();
 
-  motor3.Kpv = 0;
-  motor3.Kiv = 0;
-  motor3.Kdv = 0;
+  motor3.inputKpv(0);
+  motor3.inputKiv(0);
+  motor3.inputKdv(0);
   motor3.calc_t();
 }
 

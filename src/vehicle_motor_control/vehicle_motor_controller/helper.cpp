@@ -7,6 +7,18 @@
 
 ///////////////////////Helper Functions///////////////////////  
 
+void motorClass::inputKpv(float a){
+  Kpv = a;
+}
+
+void motorClass::inputKdv(float a){
+  Kdv = a;
+}
+
+void motorClass::inputKiv(float a){
+  Kiv = a;
+}
+
 int motorClass::openLoopController(void){
   //set scale factor value for to map from minimum pwm output to maximum pwm output
   currentCommand = desiredMotorVel * 0;//some_scale_factor;

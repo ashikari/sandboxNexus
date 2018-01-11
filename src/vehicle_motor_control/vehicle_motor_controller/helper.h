@@ -3,14 +3,13 @@
 //Motor Structure
 class motorClass
 {
-  public:
+  private:
     unsigned long currentTime = 0;
     unsigned long prevTime = 0;
     float dt = 0; 
     float Kpv = 0;
     float Kdv = 0;
     float Kiv = 0;
-    signed long encodercount = 0;
     signed long encodercountPrev = 0;
     float errorVel = 0;
     float errorVelPrev = 0;
@@ -22,6 +21,11 @@ class motorClass
     float MotorVel;
     float desiredMotorVel = 0;
     float avgMotorVel;
+  public:
+    void inputKpv(float a);
+    void inputKdv(float a);
+    void inputKiv(float a);
+    signed long encodercount = 0;
     int openLoopController(void);
     void storeOldVals(void);
     float motor_velocity_calc(void);
