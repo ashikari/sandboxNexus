@@ -15,9 +15,13 @@ set(CMAKE_MAKEFILE_DEPENDS
   "catkin_generated/order_packages.cmake"
   "joy_cmd/catkin_generated/ordered_paths.cmake"
   "joy_cmd/catkin_generated/package.cmake"
+  "kinematics/catkin_generated/ordered_paths.cmake"
+  "kinematics/catkin_generated/package.cmake"
   "/home/ashikari/sandboxNexus/src/CMakeLists.txt"
   "/home/ashikari/sandboxNexus/src/joy_cmd/CMakeLists.txt"
   "/home/ashikari/sandboxNexus/src/joy_cmd/package.xml"
+  "/home/ashikari/sandboxNexus/src/kinematics/CMakeLists.txt"
+  "/home/ashikari/sandboxNexus/src/kinematics/package.xml"
   "/opt/ros/kinetic/share/catkin/cmake/../package.xml"
   "/opt/ros/kinetic/share/catkin/cmake/all.cmake"
   "/opt/ros/kinetic/share/catkin/cmake/assert.cmake"
@@ -150,6 +154,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
   "gtest/CMakeFiles/CMakeDirectoryInformation.cmake"
   "joy_cmd/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "kinematics/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
