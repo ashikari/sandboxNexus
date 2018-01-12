@@ -11,7 +11,6 @@ def ik_cb(msg):
 	#convert global position velocities to velocity controller setpoints for each motor
 	vel_max = 1  #m/s
 	vel_gain = vel_max*(msg.data[3]+1)/2
-	print vel_gain
 	rot_gain = 1
 	#x_dot, y_dot, theta_dot
 	v = np.matrix([ - vel_gain * msg.data[0], vel_gain * msg.data[1], rot_gain* msg.data[2] ]) 
@@ -23,12 +22,12 @@ def ik_cb(msg):
 	r = 1 #wheel radius
 
 	#CHANGE THIS this value must come from the position estimation
-	theta = np.pi
+	theta = 0
 
 	#determined by the orientation we want to consider for our local coordinate system
-	th1 = 0
-	th2 = 120
-	th3 = 240
+	th1 = 0/180*np.pi
+	th2 = 120/180*np.pi
+	th3 = 240/180*np.pi
 
 	#inverse jacobian (global coord to motor vel)
 	Jinv = 1/r*np.matrix( [[-np.sin(theta+th1), np.cos(theta+th1), L],
