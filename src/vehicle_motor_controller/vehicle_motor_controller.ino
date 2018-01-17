@@ -1,6 +1,10 @@
 #include <SPI.h>
 #include "Encoder.h"
 #include "helper.h"
+#include <ros.h>
+#include <std_msgs/Float32MultiArray.h>
+#include <std_msgs/Float32.h>
+
 /*#include <ros.h>
 #include <ArduinoHardware.h>
 #include <std_msgs/Float32MultiArray.h>
