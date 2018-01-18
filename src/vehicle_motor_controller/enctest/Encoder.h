@@ -1,14 +1,17 @@
 
 // Slave Select pins for encoders 1, 2 and 3
 // Feel free to reallocate these pins to best suit your circuit
-const int slaveSelectEnc1 = 51;
-const int slaveSelectEnc2 = 9;
-const int slaveSelectEnc3 = 9;
+const int slaveSelectEnc1 = 53;
+const int slaveSelectEnc2 = 51;
+const int slaveSelectEnc3 = 49;
+const int slaveSelectEnc4 = 47;
 
 
 
 void initEncoder(int encoderName){
   // Set slave selects as outputs
+
+  
   pinMode(encoderName, OUTPUT);
 
   // Raise select pins
@@ -34,6 +37,7 @@ void initEncoders() {
   initEncoder(slaveSelectEnc1);
   initEncoder(slaveSelectEnc2);
   initEncoder(slaveSelectEnc3);
+  initEncoder(slaveSelectEnc4);
 }
 
 
@@ -62,6 +66,7 @@ void clearEncoderCounts() {
   clearEncoderCount(slaveSelectEnc1);
   clearEncoderCount(slaveSelectEnc2);
   clearEncoderCount(slaveSelectEnc3);
+  clearEncoderCount(slaveSelectEnc4);
 }
 
 long readEncoder(int encoder) {
@@ -72,7 +77,9 @@ long readEncoder(int encoder) {
    }else if(encoder == 2){
       encoderName = slaveSelectEnc2;
    }else if(encoder == 3){
-    encoderName == slaveSelectEnc3;
+    encoderName = slaveSelectEnc3;
+   }else if(encoder ==4){
+    encoderName = slaveSelectEnc4;
    }
 
   SPI.beginTransaction(SPISettings(10000000, MSBFIRST, SPI_MODE0));
@@ -90,7 +97,7 @@ long readEncoder(int encoder) {
   count_3 = SPI.transfer(0x00);           
   count_4 = SPI.transfer(0x00);           // Read lowest order byte
   SPI.endTransaction();
-  digitalWrite(slaveSelectEnc1,HIGH);     // Terminate SPI conversation 
+  digitalWrite(encoderName,HIGH);     // Terminate SPI conversation 
   
   // Calculate encoder count
   count_value = (count_1 << 8) + count_2;
