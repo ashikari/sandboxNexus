@@ -4,6 +4,8 @@
 class motorClass
 {
   private:
+    int pwmPin;
+    int dirPin;
     unsigned long currentTime = 0;
     unsigned long prevTime = 0;
     float dt = 0; 
@@ -22,6 +24,8 @@ class motorClass
     float desiredMotorVel = 0;
     float avgMotorVel;
   public:
+    void inputpwmPin(int a);
+    void inputdirPin(int a);
     void inputKpv(float a);
     void inputKdv(float a);
     void inputKiv(float a);
@@ -33,7 +37,7 @@ class motorClass
     float proportional_control(void);
     float derivative_control(void);
     float integral_control(void);
-    int closedLoopController(void); 
+    int closedLoopController(void);
 };
 
 //Constants

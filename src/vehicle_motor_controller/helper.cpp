@@ -7,6 +7,16 @@
 
 ///////////////////////Helper Functions///////////////////////  
 
+void motorClass::inputpwmPin(int a){
+  pwmPin = a;
+  pinMode(pwmPin, OUTPUT);
+}
+
+void motorClass::inputdirPin(int a){
+  dirPin = a;
+  pinMode(dirPin, OUTPUT);
+}
+
 void motorClass::inputKpv(float a){
   Kpv = a;
 }
@@ -22,6 +32,13 @@ void motorClass::inputKiv(float a){
 int motorClass::openLoopController(void){
   //set scale factor value for to map from minimum pwm output to maximum pwm output
   currentCommand = desiredMotorVel * 0;//some_scale_factor;
+  if (currentCommand > -0.001) {
+    digitalWrite(dirPin, LOW);
+  }
+  else if(currentCommand <0.001){
+    digitalWrite(dirPin, HIGH);
+  }
+  analogWrite(pwmPin, abs(currentCommand));
   return currentCommand;
 }
 
