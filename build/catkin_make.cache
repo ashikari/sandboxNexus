@@ -1,2 +1,0 @@
-joy_cmd:kinematics
--DCATKIN_DEVEL_PREFIX=/home/ashikari/sandboxNexus/devel -DCMAKE_INSTALL_PREFIX=/home/ashikari/sandboxNexus/install -G Unix Makefiles
