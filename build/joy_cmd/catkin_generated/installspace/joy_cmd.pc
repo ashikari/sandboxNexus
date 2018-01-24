@@ -1,8 +1,0 @@
-prefix=/home/ashikari/sandboxNexus/install
-
-Name: joy_cmd
-Description: Description of joy_cmd
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/ashikari/sandboxNexus/install/lib 
-Requires: 

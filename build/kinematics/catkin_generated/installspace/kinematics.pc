@@ -1,8 +1,0 @@
-prefix=/home/ashikari/sandboxNexus/install
-
-Name: kinematics
-Description: Description of kinematics
-Version: 0.0.0
-Cflags: 
-Libs: -L/home/ashikari/sandboxNexus/install/lib 
-Requires: 
