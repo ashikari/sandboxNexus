@@ -31,11 +31,11 @@ void motorClass::inputKiv(float a){
 
 int motorClass::openLoopController(void){
   //set scale factor value for to map from minimum pwm output to maximum pwm output
-  currentCommand = desiredMotorVel * 0;//some_scale_factor;
-  if (currentCommand > -0.001) {
+  currentCommand = map(desiredMotorVel, -1, 1, -255, 255);
+  if (currentCommand < -0.001) {
     digitalWrite(dirPin, LOW);
   }
-  else if(currentCommand <0.001){
+  else if(currentCommand > 0.001){
     digitalWrite(dirPin, HIGH);
   }
   analogWrite(pwmPin, abs(currentCommand));
@@ -92,6 +92,15 @@ float motorClass::integral_control(void){
 
 int motorClass::closedLoopController(void){
   currentCommand = proportional_control() + derivative_control() + integral_control();
+
+  currentCommand = map(desiredMotorVel, -1, 1, -255, 255);
+  if (currentCommand < -0.001) {
+    digitalWrite(dirPin, LOW);
+  }
+  else if(currentCommand > 0.001){
+    digitalWrite(dirPin, HIGH);
+  }
+  analogWrite(pwmPin, abs(currentCommand));
   return currentCommand; 
 }
 
