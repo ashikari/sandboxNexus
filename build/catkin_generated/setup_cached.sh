@@ -7,4 +7,7 @@
 # new environment variables
 
 # modified environment variables
+export CMAKE_PREFIX_PATH="/home/ashikari/sandboxNexus/devel:$CMAKE_PREFIX_PATH"
 export PWD="/home/ashikari/sandboxNexus/build"
+export ROSLISP_PACKAGE_DIRECTORIES="/home/ashikari/sandboxNexus/devel/share/common-lisp"
+export ROS_PACKAGE_PATH="/home/ashikari/sandboxNexus/src:$ROS_PACKAGE_PATH"
