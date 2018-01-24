@@ -1,21 +1,29 @@
 #include <SPI.h>
 #include "Encoder.h"
 #include "helper.h"
-/*#include <ros.h>
+#include <ros.h>
 #include <std_msgs/Float32MultiArray.h>
 #include <std_msgs/Float32.h>
 
 
+
+void callback(const std_msgs::Float32MultiArray& inputVelocity){
+  
+  //Fill in code to set motor controller setpoints
+ digitalWrite(10, HIGH  - digitalRead(10)); //verify communication is running
+
+  
+}
+
+
 //ros
-//10 publishers, 15 subscribers, 128 bytes for input buffer, 256 bytes for output buffer
-ros::NodeHandle_ ArduinoInterface;
+ros::NodeHandle ArduinoInterface;
 std_msgs::Float32MultiArray outputVelocity;
 
-ros::Publisher velPub("velPub", &outputVelocity);
-ros::Subscriber<std_msgs::Float32MultiArray> velSub("velSub", &callback);
+//ros::Publisher velPub("vel_topic", &outputVelocity);
+ros::Subscriber<std_msgs::Float32MultiArray> velSub("motor_cmd", &callback);
 
-void callback(const std_msgs::Float32Multiarray& inputVelocity){
-}*/
+
 
 
 motorClass motor1;
@@ -24,6 +32,8 @@ motorClass motor3;
 //motorClass motor4;
 
 void setup() {
+
+  pinMode(10,OUTPUT);
   // put your setup code here, to run once:
   //Serial.begin(9600);
   initEncoders();
@@ -33,10 +43,10 @@ void setup() {
   //Serial.println("Encoders Cleared...");
 
   //initialize ros
-  //ArduinoInterface.initNode();
+  ArduinoInterface.initNode();
 
   //subscribe
-  //ArduinoInterface.subscribe(velSub);
+  ArduinoInterface.subscribe(velSub);
 
   //define message and advertise
   //ArduinoInterface.advertise(velPub);
@@ -89,4 +99,5 @@ void loop() {
   motor2.storeOldVals();
   motor3.storeOldVals();
   //motor4.storeOldVals();
+  ArduinoInterface.spinOnce();
 }
