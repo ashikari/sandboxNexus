@@ -5,14 +5,19 @@
 #include <std_msgs/Float32MultiArray.h>
 #include <std_msgs/Float32.h>
 
-
+motorClass motor1;
+motorClass motor2;
+motorClass motor3;
+//motorClass motor4;
 
 void callback(const std_msgs::Float32MultiArray& inputVelocity){
   
   //Fill in code to set motor controller setpoints
- digitalWrite(10, HIGH  - digitalRead(10)); //verify communication is running
-
+  digitalWrite(10,HIGH -  digitalRead(10)) ;
   
+  motor1.setMotorVel( constrain(150*inputVelocity.data[0], -100, 100) );
+  motor2.setMotorVel( constrain(150*inputVelocity.data[1], -100, 100) );
+  motor3.setMotorVel( constrain(150*inputVelocity.data[2], -100, 100) );
 }
 
 
@@ -25,11 +30,6 @@ ros::Subscriber<std_msgs::Float32MultiArray> velSub("motor_cmd", &callback);
 
 
 
-
-motorClass motor1;
-motorClass motor2;
-motorClass motor3;
-//motorClass motor4;
 
 void setup() {
 
@@ -52,25 +52,25 @@ void setup() {
   //ArduinoInterface.advertise(velPub);
   
   //Input motor class information, initialize times. 
-  motor1.inputKpv(0);
+  motor1.inputKpv(1);
   motor1.inputKiv(0);
   motor1.inputKdv(0);
-  motor1.inputpwmPin(0);
-  motor1.inputdirPin(0);
+  motor1.inputpwmPin(4);
+  motor1.inputdirPin(5);
   motor1.calc_t();
 
-  motor2.inputKpv(0);
+  motor2.inputKpv(1);
   motor2.inputKiv(0);
   motor2.inputKdv(0);
-  motor1.inputpwmPin(0);
-  motor1.inputdirPin(0);
+  motor2.inputpwmPin(6);
+  motor2.inputdirPin(7);
   motor2.calc_t();
 
-  motor3.inputKpv(0);
+  motor3.inputKpv(1);
   motor3.inputKiv(0);
   motor3.inputKdv(0);
-  motor3.inputpwmPin(0);
-  motor3.inputdirPin(0);
+  motor3.inputpwmPin(8);
+  motor3.inputdirPin(9);
   motor3.calc_t();
 
   /*motor4.inputKpv(0);

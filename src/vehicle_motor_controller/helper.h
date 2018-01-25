@@ -29,6 +29,7 @@ class motorClass
     void inputKpv(float a);
     void inputKdv(float a);
     void inputKiv(float a);
+    void setMotorVel(float a);
     signed long encodercount = 0;
     int openLoopController(void);
     void storeOldVals(void);
