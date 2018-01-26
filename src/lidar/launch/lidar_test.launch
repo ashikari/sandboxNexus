@@ -1,0 +1,10 @@
+<launch>
+  <!-- Comment -->
+  <node pkg="rosserial_python" type="serial_node.py" name="serial_receiver">
+    <param name="port" value="/dev/ttyACM0"/>
+    <param name="baud" value="115200"/>
+  </node>
+  
+  <node pkg="rosbag" type="record" name="recorder" args="record -a -o /home/filippos/sandboxNexus/data/Lidar_test_posXX_modeXX"  />
+  
+</launch>
