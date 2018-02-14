@@ -2,7 +2,6 @@
 // See helper.h for additional notes and comments on the purpose of each variable
 
 #include "helper.h"
-
 #include "Arduino.h"
 
 ///////////////////////Helper Functions///////////////////////  
