@@ -13,7 +13,7 @@ def ik_cb(msg):
 	vel_gain = vel_max*(msg.data[3]+1)/2
 	rot_gain = 1
 	#x_dot, y_dot, theta_dot
-	v = np.matrix([ - vel_gain * msg.data[0], vel_gain * msg.data[1], rot_gain* msg.data[2] ]) 
+	v = np.matrix([ -vel_gain * msg.data[0], vel_gain * msg.data[1], rot_gain* msg.data[2] ]) 
 
 	#geometric properties
 	L = 1.0 #characteristic length

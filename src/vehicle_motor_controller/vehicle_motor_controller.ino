@@ -1,5 +1,6 @@
 #include <SPI.h>
 #include "Encoder.h"
+#include "kinematics.hpp"
 #include "helper.h"
 #include <ros.h>
 #include <std_msgs/Float32MultiArray.h>
