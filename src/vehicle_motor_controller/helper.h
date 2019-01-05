@@ -29,6 +29,7 @@ class motorClass
     void inputKpv(float a);
     void inputKdv(float a);
     void inputKiv(float a);
+    void setMotorVel(float a);
     signed long encodercount = 0;
     int openLoopController(void);
     void storeOldVals(void);
@@ -41,8 +42,8 @@ class motorClass
 };
 
 //Constants
-const int MAX_PWM = 400;
-const int MIN_PWM = -400;
+const int MAX_PWM = 255;
+const int MIN_PWM = 0;
 //Staff constants
 const int   FREQ = 2000;
 const float PERIOD = 0.0005;

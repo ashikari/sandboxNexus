@@ -2,9 +2,9 @@
 // Slave Select pins for encoders 1, 2 and 3
 // Feel free to reallocate these pins to best suit your circuit
 const int slaveSelectEnc1 = 53;
-const int slaveSelectEnc2 = 51;
+const int slaveSelectEnc2 = 47;
 const int slaveSelectEnc3 = 49;
-const int slaveSelectEnc4 = 47;
+const int slaveSelectEnc4 = 51;
 
 
 

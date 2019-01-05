@@ -12,7 +12,6 @@ def test():
 	print 'testing...'
 
 	for i in range(0,10):
-
 		rospy.init_node('test',anonymous = True)
 		t1 = Float32MultiArray(data = [0, 1, 0 , 1])
 		test_pub.publish(t1)
