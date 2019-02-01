@@ -2,7 +2,6 @@
 // See helper.h for additional notes and comments on the purpose of each variable
 
 #include "helper.h"
-
 #include "Arduino.h"
 
 ///////////////////////Helper Functions///////////////////////  
@@ -29,13 +28,17 @@ void motorClass::inputKiv(float a){
   Kiv = a;
 }
 
+void motorClass::setMotorVel(float a){
+  desiredMotorVel = a;
+}
+
 int motorClass::openLoopController(void){
   //set scale factor value for to map from minimum pwm output to maximum pwm output
-  currentCommand = desiredMotorVel * 0;//some_scale_factor;
-  if (currentCommand > -0.001) {
+  currentCommand = map(desiredMotorVel, -100, 100, -255, 255);
+  if (currentCommand < -0.001) {
     digitalWrite(dirPin, LOW);
   }
-  else if(currentCommand <0.001){
+  else if(currentCommand > 0.001){
     digitalWrite(dirPin, HIGH);
   }
   analogWrite(pwmPin, abs(currentCommand));
@@ -92,6 +95,15 @@ float motorClass::integral_control(void){
 
 int motorClass::closedLoopController(void){
   currentCommand = proportional_control() + derivative_control() + integral_control();
+
+  currentCommand = map(desiredMotorVel, -100, 100, -255, 255);
+  if (currentCommand < -0.001) {
+    digitalWrite(dirPin, LOW);
+  }
+  else if(currentCommand > 0.001){
+    digitalWrite(dirPin, HIGH);
+  }
+  analogWrite(pwmPin, abs(currentCommand));
   return currentCommand; 
 }
 
